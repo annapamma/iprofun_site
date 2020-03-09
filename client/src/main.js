@@ -10,7 +10,6 @@ import 'buefy/dist/buefy.css'
 Vue.use(Buefy)
 Vue.use(TableComponent);
 Vue.config.productionTip = false;
-// Vue.use(ClientTable);
 
 new Vue({
   store,

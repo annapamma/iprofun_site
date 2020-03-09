@@ -1,15 +1,15 @@
 <template>
   <div id="app">
+    <HeaderLogo/>
     <div class="columns is-desktop">
-    <div class="column is-one-quarter-desktop">
-      <HeaderLogo />
-      <Intro />
-      <WebtoolExplanation />
-    </div>
-    <div class="column">
-      <Input />
-      <TableContainer />
-    </div>
+      <div class="column is-one-quarter-desktop">
+        <Intro />
+        <WebtoolExplanation />
+      </div>
+      <div class="column">
+        <Input />
+        <TableContainer />
+      </div>
     </div>
   </div>
 </template>
