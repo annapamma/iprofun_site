@@ -3,37 +3,55 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-// import axios from 'axios';
+import axios from 'axios';
 // import luad from '../data/luad.js'
 
+// const apiRoot = 'https://raw.githubusercontent.com/annapamma/iprofun_site/master/client/data'
+const apiRoot = '../data';
 
 export default new Vuex.Store({
   state: {
+      genes: [],
     loading: false,
+      tableData: [],
   },
   mutations: {
+      'SET_GENES' (state, genes) {
+          Vue.set(
+              state,
+              'genes',
+              genes.split(',').map(el => el.toUpperCase())
+          );
+      },
     'SET_LOADING'(state, loading) {
         state.loading = loading;
-    }
+    },
+    'SET_TABLE_DATA'(state, data) {
+        Vue.set(state, 'tableData', data);
+    },
   },
   actions: {
+      addGenes(store, genes) {
+          store.commit('SET_GENES', genes);
+      },
     fetchTable(store, { tumor }) {
         store.commit('SET_LOADING', true);
-      console.log('in action')
-      // axios.get(
-      //   `${apiRoot}/api/${tumor}`,
-      // ).then(
-      //   ({ data }) => {
-      //       console.log(data)
-      //   },
-      // ).then(
-      //   () => {
-      //   },
-      // ).catch(
-      //   () => {
-      //     console.log('oh no there was an error!');
-      //   },
-      // );
+        // store.commit('SET_GENES', genes);
+      axios.get(
+        `${apiRoot}/${tumor}.json`,
+      ).then(
+        ({ data }) => {
+            store.commit('SET_TABLE_DATA', data);
+            store.commit('SET_LOADING', false);
+        },
+      ).then(
+        () => {
+        },
+      ).catch(
+        () => {
+          console.log('oh no there was an error!');
+        },
+      );
     },
   }
 })

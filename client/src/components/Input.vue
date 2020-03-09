@@ -3,13 +3,12 @@
     <div class="instructions">
         <u>Directions</u>:
         Select a tumor of interest and enter genes to receive a sortable table of iProFun results.
-        <div class="tumor-selector">
-            <b-select
+        <div class="tumor-selector field has-addons">
+                <b-select
                     placeholder="Select a tumor type"
                     v-model="selected"
-                    v-on:input="handleTumorSelection"
-                    :loading="loading"
-            >
+                    type="is-info"
+                >
                 <option
                     v-for="tumor in tumors"
                     :value="tumor"
@@ -18,6 +17,7 @@
                     {{ tumor }}
                 </option>
             </b-select>
+                <b-button :loading="loading" type="is-primary" @click="handleSubmit">Submit</b-button>
         </div>
     </div>
 
@@ -29,7 +29,7 @@ export default {
     name: 'Input',
     data() {
         return {
-            tumors: ['LUAD', 'ccRCC'],
+            tumors: ['LUAD', 'CCRCC'],
             selected: null,
         }
     },
@@ -39,8 +39,15 @@ export default {
         }
     },
     methods: {
-        handleTumorSelection() {
-            this.$store.dispatch('fetchTable', { tumor: this.selected })
+        handleSubmit() {
+            if (this.selected) {
+                this.$store.dispatch(
+                    'fetchTable',
+                    {
+                        tumor: this.selected
+                    }
+                )
+            }
         }
     },
 }

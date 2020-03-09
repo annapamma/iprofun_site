@@ -1,8 +1,9 @@
 <template>
   <div class="webtool-explanation">
     <div class="txt">
-        The iProFun method takes as input genome-wide summary statistics in assessing associations of CNVs and DNA methylations on each type of molecular traits, and allows genes and molecular QTs to be arbitrarily correlated in the joint analysis. The iProFun method estimates the conditional density of each type of trait separately, allowing different scales and distributions among different data types. And, it also allows for sample correlations due to complete or partial overlapping of samples. In comparison with the separate analyses of CNA and then methylation on each molecular trait, iProFun leverages data from multiple sources and follows information across data types.    </div>
+        iProFun takes as input the summary statistics from association analyses of each pair of DNA alterations and molecular traits, and provides clinically meaningful discoveries for the association with multi-omic outcomes with FDR control. A clinically meaningful significant association is identified if it passes three criteria: (1) biological filtering procedure, (2) posterior probabilities of associating to an outcome > 75%, and (3) empirical FDR <10% from 100 permutations. The biological filtering criterion is posed on the direction of associations with all outcomes: for CNVs only associations with positive direction with all the types of outcomes are considered; DNA methylations from promoter regions require negative associations with all the outcomes; and mutations need the associations to have consistent direction (either positive or negative) with all types of outcomes. iProFun enjoys substantial power gain by borrowing information across data types, and achieves accuracy in inferring associations unique to certain type(s) of molecular trait(s).  </div>
   </div>
+
 </template>
 
 <script>
@@ -14,9 +15,10 @@ export default {
 <style scoped>
     .webtool-explanation {
         background-color: #416788;
-        padding: 20px 60px;
+        padding: 20px;
         margin: 10px auto;
-        font-weight: bold;
+        font-weight: normal;
+        font-size: .85em;
     }
 
     .txt {

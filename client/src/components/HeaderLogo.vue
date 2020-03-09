@@ -15,6 +15,6 @@
         margin: 0 auto;
     }
     .logo img {
-        max-width: 800px;
+        max-width: 100%;
     }
 </style>
