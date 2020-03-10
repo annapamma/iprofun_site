@@ -2,17 +2,21 @@
     <div class="table-container">
         <div class="table-details">
             <p>We employ an empirical FDR (eFDR) 0.1 to identify significant associations. Associations are indicated as  1 if the are identified at eFDR&lt;0.1, and are indicated as 0 if they are not.</p>
-            <download-excel
-                    v-if="tableData.length"
-                :data = "tableData"
-                class   = "btn btn-default"
-                name    = "iprofun.xls"
-            >
-                <b-button type="is-info"
-                    icon-left="download">
+            <!--<download-excel-->
+                    <!--v-if="tableData.length"-->
+                <!--:data = "tableData"-->
+                <!--class   = "btn btn-default"-->
+                <!--name    = "iprofun.xls"-->
+                    <!--type="xls"-->
+            <!--&gt;-->
+                <b-button
+                        type="is-info"
+                    icon-left="download"
+                    @click="handleClick"
+                >
                     Download
                 </b-button>
-            </download-excel>
+            <!--</download-excel>-->
             </div>
             <table-component
                  :data="tableData"
@@ -35,6 +39,8 @@
 </template>
 
 <script>
+    import { utils, writeFile } from 'xlsx';
+
     export default {
         name: "table-container",
         computed: {
@@ -42,6 +48,14 @@
                 return this.$store.state.tableData;
             }
         },
+        methods: {
+            handleClick() {
+                const ws = utils.json_to_sheet(this.tableData);
+                const wb = utils.book_new();
+                  utils.book_append_sheet(wb, ws);
+                  writeFile(wb, 'iprofun.xls');
+            }
+        }
     }
 </script>
 

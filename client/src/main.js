@@ -6,9 +6,7 @@ import store from './store'
 import TableComponent from 'vue-table-component';
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
-import JsonExcel from 'vue-json-excel'
 
-Vue.component('downloadExcel', JsonExcel)
 Vue.use(Buefy)
 Vue.use(TableComponent);
 Vue.config.productionTip = false;

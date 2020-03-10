@@ -21,7 +21,7 @@
         </div>
         <div class="buttons">
                     <form @submit.prevent="handleSubmit">
-                <b-field label="Genes of interest (comma-separated)" >
+                <b-field label="Genes of interest (comma-separated; blank for all genes)" >
                     <b-input v-model="inputGenes"></b-input>
                 </b-field>
                 <b-button :loading="loading" type="is-primary" rounded native-type="submit">Submit</b-button>
