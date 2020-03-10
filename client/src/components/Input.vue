@@ -100,6 +100,9 @@ export default {
     a {
       color: #42b983;
 }
+    label {
+        font-size: small;
+    }
     .tumor-selector {
         margin-top: 10px;
     }
