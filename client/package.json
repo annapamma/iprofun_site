@@ -13,6 +13,7 @@
     "core-js": "^2.6.5",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
+    "vue-json-excel": "^0.2.98",
     "vue-table-component": "^1.9.2",
     "vue-tables-2": "^2.0.7",
     "vuex": "^3.0.1"

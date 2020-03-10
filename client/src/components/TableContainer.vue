@@ -1,6 +1,19 @@
 <template>
     <div class="table-container">
+        <div class="table-details">
             <p>We employ an empirical FDR (eFDR) 0.1 to identify significant associations. Associations are indicated as  1 if the are identified at eFDR&lt;0.1, and are indicated as 0 if they are not.</p>
+            <download-excel
+                    v-if="tableData.length"
+                :data = "tableData"
+                class   = "btn btn-default"
+                name    = "iprofun.xls"
+            >
+                <b-button type="is-info"
+                    icon-left="download">
+                    Download
+                </b-button>
+            </download-excel>
+            </div>
             <table-component
                  :data="tableData"
                  :show-filter="false"
@@ -24,26 +37,11 @@
 <script>
     export default {
         name: "table-container",
-        data() {
-            return {
-                inputGenes: ''
-            }
-        },
         computed: {
             tableData() {
-                // if (this.genes.length) {
-                //     return this.$store.state.tableData.filter(el => {
-                //         return this.genes.includes(el['Gene'])
-                //     });
-                // }
                 return this.$store.state.tableData;
             }
         },
-        methods: {
-            onSubmit() {
-                this.$store.dispatch('addGenes', this.inputGenes);
-            }
-        }
     }
 </script>
 
@@ -188,4 +186,5 @@
         overflow: hidden;
         /* overflow-x: scroll; */
     }
+
 </style>

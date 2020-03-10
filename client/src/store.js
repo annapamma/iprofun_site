@@ -46,11 +46,13 @@ export default new Vuex.Store({
         `${apiRoot}/${tumor}.json`,
       ).then(
         ({ data }) => {
+            console.log(genes)
+            const tableData = genes.length ? data.filter(el => {
+                        return genes.includes(el['Gene'])
+                    }) : data;
             store.commit(
                 'SET_TABLE_DATA',
-                data.filter(el => {
-                        return genes.includes(el['Gene'])
-                    })
+                tableData
             );
             store.commit('SET_LOADING', false);
         },
