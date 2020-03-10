@@ -22,3 +22,4 @@ yarn-error.log*
 
 server/__pycache__/
 venv/
+client/dist.tar.gz
