@@ -38,7 +38,7 @@ export default new Vuex.Store({
       addGenes(store, genes) {
           store.commit('SET_GENES', genes);
       },
-    fetchTable(store, { tumor }) {
+    fetchTable(store, { tumor, genes }) {
         store.commit('SET_LOADING', true);
         store.commit('SET_TUMOR', tumor);
         // store.commit('SET_GENES', genes);
@@ -46,7 +46,12 @@ export default new Vuex.Store({
         `${apiRoot}/${tumor}.json`,
       ).then(
         ({ data }) => {
-            store.commit('SET_TABLE_DATA', data);
+            store.commit(
+                'SET_TABLE_DATA',
+                data.filter(el => {
+                        return genes.includes(el['Gene'])
+                    })
+            );
             store.commit('SET_LOADING', false);
         },
       ).then(

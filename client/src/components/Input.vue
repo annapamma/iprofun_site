@@ -17,8 +17,14 @@
                     {{ tumor }}
                 </option>
             </b-select>
-                <b-button :loading="loading" type="is-primary" @click="handleSubmit">Submit</b-button>
+                <!--<b-button type="is-primary" @click="handleSubmit">Submit</b-button>-->
         </div>
+                    <form @submit.prevent="handleSubmit">
+                <b-field label="Genes of interest (comma-separated)" >
+                    <b-input v-model="inputGenes"></b-input>
+                </b-field>
+                <b-button :loading="loading" type="is-primary" rounded native-type="submit">Submit</b-button>
+            </form>
     </div>
 
   </div>
@@ -31,6 +37,7 @@ export default {
         return {
             tumors: [ 'CCRCC', 'LUAD',],
             selected: null,
+            inputGenes: ''
         }
     },
     computed: {
@@ -44,12 +51,24 @@ export default {
                 this.$store.dispatch(
                     'fetchTable',
                     {
-                        tumor: this.selected
+                        tumor: this.selected,
+                        genes: this.inputGenes.split(',').map(el => el.trim().toUpperCase()),
                     }
                 )
             }
-        }
+        },
     },
+    mounted() {
+        this.selected = 'CCRCC';
+        this.inputGenes = 'SQSTM1,YY1,ERG,ARHGEF17'
+        this.$store.dispatch(
+                    'fetchTable',
+                    {
+                        tumor: this.selected,
+                        genes: this.inputGenes.split(',').map(el => el.trim().toUpperCase()),
+                    }
+                )
+    }
 }
 
 </script>
@@ -83,5 +102,11 @@ export default {
 }
     .tumor-selector {
         margin-top: 10px;
+    }
+
+    .example-button {
+        margin-top: 6px;
+        margin-bottom: auto;
+        margin-left: 50px;
     }
 </style>

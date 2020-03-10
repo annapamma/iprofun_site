@@ -1,11 +1,5 @@
 <template>
     <div class="table-container">
-            <form @submit.prevent="onSubmit" v-if="tableData.length">
-                <b-field label="Genes of interest (comma-separated)" >
-                    <b-input v-model="inputGenes"></b-input>
-                </b-field>
-                <b-button rounded native-type="submit">Filter</b-button>
-            </form>
             <table-component
                  :data="tableData"
                  :show-filter="false"
@@ -35,15 +29,12 @@
             }
         },
         computed: {
-            genes() {
-                return this.$store.state.genes;
-            },
             tableData() {
-                if (this.genes.length) {
-                    return this.$store.state.tableData.filter(el => {
-                        return this.genes.includes(el['Gene'])
-                    });
-                }
+                // if (this.genes.length) {
+                //     return this.$store.state.tableData.filter(el => {
+                //         return this.genes.includes(el['Gene'])
+                //     });
+                // }
                 return this.$store.state.tableData;
             }
         },
