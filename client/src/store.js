@@ -14,6 +14,7 @@ export default new Vuex.Store({
       genes: [],
     loading: false,
       tableData: [],
+      tumor: '',
   },
   mutations: {
       'SET_GENES' (state, genes) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     'SET_TABLE_DATA'(state, data) {
         Vue.set(state, 'tableData', data);
     },
+      'SET_TUMOR'(state, tumor) {
+        state.tumor = tumor;
+      },
   },
   actions: {
       addGenes(store, genes) {
@@ -36,6 +40,7 @@ export default new Vuex.Store({
       },
     fetchTable(store, { tumor }) {
         store.commit('SET_LOADING', true);
+        store.commit('SET_TUMOR', tumor);
         // store.commit('SET_GENES', genes);
       axios.get(
         `${apiRoot}/${tumor}.json`,

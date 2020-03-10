@@ -18,8 +18,13 @@
                 analysis technologies to different cancer types. CPTAC is composed of expertise in proteomics, genomics,
                 cancer biology, oncology, and clinical chemistry, while creating open community resources that
                 are widely used by the cancer community.
-                <p>This page provide data visualization for proteogenomic data from CPTAC-CCRCC discovery project. To view the data as a co-expression network, visit the <a href="http://ccrcc.cptac-network-view.org/"> CPTAC Interactive Network Portal</a>.</p>
+                <div v-if="tumor == 'CCRCC'">
+                <p>This page provides integrative analysis results for identifying DNA-level alterations perturbing functional molecular traits at pre-determined FDR rate from CPTAC-CCRCC discovery project. To view the data as a co-expression network, visit the <a href="http://ccrcc.cptac-network-view.org/"> CPTAC Interactive Network Portal</a>.</p>
                 <p>For more information, please see the publication <a href="https://www.ncbi.nlm.nih.gov/pubmed/31675502">Fenyo et al. Cell. 2019</a>.</p>
+                </div>
+                <div v-if="tumor == 'LUAD'">
+                <p>This page provides integrative analysis results for identifying DNA-level alterations perturbing functional molecular traits at pre-determined FDR rate from CPTAC-LUAD discovery project.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -27,7 +32,12 @@
 
 <script>
     export default {
-        name: "header-logo"
+        name: "header-logo",
+        computed: {
+            tumor() {
+                return this.$store.state.tumor;
+            }
+        }
     }
 </script>
 

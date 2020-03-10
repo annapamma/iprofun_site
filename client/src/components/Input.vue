@@ -29,7 +29,7 @@ export default {
     name: 'Input',
     data() {
         return {
-            tumors: ['LUAD', 'CCRCC'],
+            tumors: [ 'CCRCC', 'LUAD',],
             selected: null,
         }
     },
@@ -57,17 +57,17 @@ export default {
 <style scoped>
     .input-container {
         background-color: #E0E0E2;
-        padding: 20px 60px;
+        padding: 10px;
         font-weight: bold;
         margin: 10px auto;
     }
 
     .instructions {
-        margin: 10px auto;
+        margin: 5px auto;
     }
 
     h3 {
-      margin: 10px 0 0;
+      margin: 0 0;
     }
 
     ul {
