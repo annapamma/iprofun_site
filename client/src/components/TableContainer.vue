@@ -1,5 +1,6 @@
 <template>
     <div class="table-container">
+            <p>We employ an empirical FDR (eFDR) 0.1 to identify significant associations. Associations are indicated as  1 if the are identified at eFDR&lt;0.1, and are indicated as 0 if they are not.</p>
             <table-component
                  :data="tableData"
                  :show-filter="false"
@@ -47,6 +48,10 @@
 </script>
 
 <style>
+        .table-container p {
+                margin-bottom: 0;
+                font-weight: bold;
+        }
     *,
     *:after,
     *:before {
@@ -59,7 +64,7 @@
     .table-component {
       display: flex;
       flex-direction: column;
-      margin: 1em 0;
+      margin: 0em 0;
     }
 
     .table-component__filter {
