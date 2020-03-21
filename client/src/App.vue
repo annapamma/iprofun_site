@@ -4,17 +4,19 @@
     <div class="columns is-desktop">
       <div class="column is-one-quarter-desktop">
         <Intro />
-        <WebtoolExplanation />
+        <DetailBox />
       </div>
       <div class="column">
         <Input />
         <TableContainer />
+        <WebtoolExplanation />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DetailBox from './components/DetailBox.vue'
 import Input from './components/Input.vue'
 import HeaderLogo from './components/HeaderLogo.vue'
 import Intro from './components/Intro.vue'
@@ -24,6 +26,7 @@ import WebtoolExplanation from './components/WebtoolExplanation.vue'
 export default {
   name: 'app',
   components: {
+      DetailBox,
     HeaderLogo,
     Input,
     Intro,

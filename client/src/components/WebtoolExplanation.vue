@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
     .webtool-explanation {
-        background-color: #416788;
+        background-color: #826C7F;
         padding: 20px;
         margin: 10px auto;
         font-weight: normal;
