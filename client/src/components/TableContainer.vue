@@ -17,7 +17,7 @@
                     <b-checkbox v-model="column.visible">
                     </b-checkbox>
                     <b-tooltip
-                        label="This is where the column description goes"
+                        :label="column.description"
                         position="is-bottom"
                         size="is-large"
                         multilined
@@ -41,8 +41,6 @@
                 :data="tableData"
                 :hoverable="true"
                 :sticky-header="true"
-                detailed
-                :show-detail-icon="tableData.length < 30"
             >
                 <template slot-scope="props">
                     <b-table-column v-for="(column, index) in columns"
@@ -86,57 +84,68 @@
                         label: 'Chr',
                         sortable: true,
                         visible: true,
+                        description: 'Chromosome'
                     },
                     {
                         field: 'start',
                         label: 'Start',
                         sortable: true,
                         visible: true,
+                        description: 'Start',
                     },
                     {
                         field: 'CNV (lr) RNA',
                         label: 'CNV RNA',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating CNV of the gene is associated with its mRNA expression at FDR 0.1.',
                     },
                     {
                         field: 'CNV (lr) Protein',
                         label: 'CNV Protein',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating CNV of the gene is associated with its protein abundance at FDR 0.1.',
                     },
                     {
                         field: 'CNV (lr) Phospho',
                         label: 'CNV Phospho',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating CNV of the gene is associated with its phosphoprotein abundance at FDR 0.1.',
                     },
                     {
                         field: 'Methylation RNA',
                         label: 'Methyl RNA',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating DNA methylation in the promotor region of the gene is associated with its gene expression level at FDR 0.1.',
                     },
                     {
                         field: 'Methylation Protein',
                         label: 'Methyl Protein',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating DNA methylation in the promotor region of the gene is associated with its protein abundance level at FDR 0.1.',
                     },
                     {
                         field: 'Methylation Phospho',
                         label: 'Methyl Phospho',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating DNA methylation in the promotor region of the gene is associated with its phosphoprotein abundance level at FDR 0.1.',
                     },
                     {
                         field: 'Mutation RNA',
                         label: 'Mut RNA',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating mutation of the gene is associated with its gene expression level at FDR 0.1',
                     },
                     {
                         field: 'Mutation Protein',
                         label: 'Mut Protein',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating mutation of the gene is associated with its protein abundance at FDR 0.1',
                     },
                     {
                         field: 'Mutation Phospho',
                         label: 'Mut Phospho',
-                        ...columnFeatures
+                        ...columnFeatures,
+                        description: 'Indicating mutation of the gene is associated with its phosphoprotein abundance at FDR 0.1',
                     },
                 ]
             }
